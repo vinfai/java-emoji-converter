@@ -1,31 +1,39 @@
 package com.github.binarywang.java.emoji;
 
+import com.github.binarywang.java.emoji.model.Emoji4Unicode;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.*;
+
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.github.binarywang.java.emoji.EmojiReader;
-import com.github.binarywang.java.emoji.model.Emoji4Unicode;
+import static org.testng.AssertJUnit.*;
 
 public class EmojiReaderTest {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private EmojiReader emojiReader = new EmojiReader();
 
-    @Test
-    public void testRead() {
-        Emoji4Unicode a = EmojiReader.read();
-        System.err.println(ToStringBuilder.reflectionToString(a));
-        Assert.assertNotNull(a);
+    @BeforeTest
+    public void init(){
+        BasicConfigurator.configure();
     }
 
     @Test
-    public void testReadSb2UnicodeMap() {
-        Map<List<Integer>, String> sb2UnicodeMap = EmojiReader
-            .readSb2UnicodeMap();
+    public void testRead() {
+        Emoji4Unicode a = this.emojiReader.read(false);
+        this.logger.info(ToStringBuilder.reflectionToString(a));
+        assertNotNull(a);
+    }
 
-        System.err.println(sb2UnicodeMap);
-        Assert.assertNotNull(sb2UnicodeMap);
+    @Test
+    public void testGetSb2UnicodeMap() {
+        Map<List<Integer>, String> sb2UnicodeMap = this.emojiReader.getSb2UnicodeMap();
+
+        this.logger.info(sb2UnicodeMap.toString());
+        assertNotNull(sb2UnicodeMap);
     }
 
 }
