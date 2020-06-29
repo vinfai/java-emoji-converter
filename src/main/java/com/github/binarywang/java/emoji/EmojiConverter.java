@@ -40,13 +40,16 @@ public class EmojiConverter {
         }
 
     }
-
     private String sb2Unicode(String input) {
+        return sb2Unicode(input, true);
+    }
+
+    private String sb2Unicode(String input,boolean onlyFromLocal) {
         if (this.emojiReader == null) {
             this.emojiReader = new EmojiReader();
         }
 
-        final Map<List<Integer>, String> sb2UnicodeMap = this.emojiReader.getSb2UnicodeMap();
+        final Map<List<Integer>, String> sb2UnicodeMap = this.emojiReader.getSb2UnicodeMap(onlyFromLocal);
 
         StringBuilder result = new StringBuilder();
         int[] codePoints = toCodePointArray(input);

@@ -71,14 +71,14 @@ public class EmojiReader {
 
     }
 
-    public Map<List<Integer>, String> getSb2UnicodeMap() {
+    public Map<List<Integer>, String> getSb2UnicodeMap(boolean onlyFromLocal) {
         if (sb2UnicodeMap != null) {
             return sb2UnicodeMap;
         }
 
         sb2UnicodeMap = Maps.newHashMap();
 
-        Emoji4Unicode emoji4Unicode = read(false);
+        Emoji4Unicode emoji4Unicode = read(onlyFromLocal);
         for (Category category : emoji4Unicode.getCategories()) {
             List<SubCategory> subCategories = category.getSubCategories();
             if (subCategories == null) {

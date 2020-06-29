@@ -61,3 +61,6 @@ Add this in your maven pom file（将以下内容加入你的maven的pom文件�
         System.err.println(result);
         Assert.assertEquals("🙅 🙆 💑 😃 😀 😉", result);
     }
+
+## 2.0.1
+修改EmojiReader，支持本地读取

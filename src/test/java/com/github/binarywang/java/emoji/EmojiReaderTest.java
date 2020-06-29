@@ -30,7 +30,7 @@ public class EmojiReaderTest {
 
     @Test
     public void testGetSb2UnicodeMap() {
-        Map<List<Integer>, String> sb2UnicodeMap = this.emojiReader.getSb2UnicodeMap();
+        Map<List<Integer>, String> sb2UnicodeMap = this.emojiReader.getSb2UnicodeMap(true);
 
         this.logger.info(sb2UnicodeMap.toString());
         assertNotNull(sb2UnicodeMap);
